@@ -25,8 +25,16 @@ namespace Ecology
 
         static void Main(string[] args)
         {
-            if (!CheckFileExisting()) { Console.ReadKey();return; }
 
+            //Console.WriteLine();
+            //string str = "qwer";
+            //double dub = convert(str);
+            //Console.WriteLine(dub);
+            //Console.ReadKey();
+            //return;
+
+            if (!CheckFileExisting()) { Console.ReadKey();return; }
+            Console.ReadKey();
             List <data> example = new List<data>();
             InitializeListFields(ref example); //Инициализировать пустые значения example<data>
             InsertAllValues(ref example);      //Вставить значения в example<data>
@@ -740,127 +748,17 @@ namespace Ecology
 
         static double convert(string origin)
         {
-            if (origin == "0") { return 0.0; }
-            string final = "";
-            bool dotExists = false;
-            bool Eexists = false;
-            bool isEfound = false;
-            int dotPosition = 0;
-            int k = 0;
-            double dVal = 0;
-            for (int i = 0; i < origin.Length; i++)
+            string newLine = origin;
+            if (origin.Contains('.'))
             {
-                if (origin[(int)i] != '.')
-                {
-                    final += origin[(int)i];
-                }
-                else
-                    dotPosition = ((int)i + 1);
+                newLine = origin.Replace('.', ',');
             }
-
-            for (int si = 0; si < origin.Length; si++)
+            try
             {
-                if (origin[si] == '.')
-                    dotExists = true;
-                if (isE(origin[si]))
-                    Eexists = true;
+                return Convert.ToDouble(newLine);
             }
-            if (dotExists == false && Eexists == false)
-            {
-                for (int ass = 0; ass < final.Length; ass++)
-                {
-                    dVal += CharToDouble(final[ass]) * Math.Pow(0.1, ass);
-                }
-                dVal *= Math.Pow(10.0, (int)final.Length - 1);
-                return dVal;
-            }
-
-            while (k < final.Length)
-            {
-                if (isEfound) break;
-                if (k > final.Length /*|| k < final.Length*/) break;
-                if (isE(final[k]))
-                {
-                    isEfound = true;
-                    double behindEnumbers = 0;
-                    string behindString = "";
-                    int countor = 0;
-                    bool isDotExists = false;
-
-                    while (!isE(final[countor]))
-                    {
-                        if (origin[countor] == '.' || origin[countor + 1] == '.')
-                        {
-                            isDotExists = true;
-                            break;
-                        }
-                        behindEnumbers += CharToDouble(final[countor]) * Math.Pow(0.1, countor);
-                        countor++;
-                    }
-
-                    if (isDotExists)
-                    {
-                        for (int huy = 0; !isE(origin[huy]); huy++)
-                        {
-                            behindString += origin[huy];
-                        }
-                        behindEnumbers = convert(behindString);
-                    }
-                    else
-                        behindEnumbers *= Math.Pow(10.0, countor - 1);
-
-                    double postEnumbers = 0;
-                    double postEnumberPosition = 0.0;
-                    int postEnumbersCount = 0;
-                    double postEfirstNumber = 0;
-                    for (int post = final.Length; post > 0; post--)
-                    {
-                        if (isE(final[post - 1]))
-                        {
-                            postEfirstNumber = post + 1;
-                            postEnumbersCount = (int)(final.Length - postEfirstNumber);
-                        }
-                    }
-                    for (int cnt = 2; cnt < (2 + postEnumbersCount); cnt++)
-                    {
-                        try
-                        {
-                            if ((k + cnt) <= final.Length && final[k + cnt] >= 48 && final[k + cnt] <= 57)
-                            {
-                                double buffa = CharToDouble(final[k + cnt]);
-                                postEnumbers += (buffa * Math.Pow(0.1, postEnumberPosition));
-                                postEnumberPosition++;
-                            }
-                            else
-                                break;
-                        }
-                        catch
-                        {
-                            break;
-                        }
-                    }
-                    postEnumbers *= Math.Pow(10.0, postEnumberPosition - 1);
-                    //Console.WriteLine("behindEnumbers"+ behindEnumbers);
-                    //Console.WriteLine("postEnumbers = "+ postEnumbers);
-                    double resultingWithDotE = 0;
-
-                    if (final[k + 1] == '+')
-                        resultingWithDotE = behindEnumbers * Math.Pow(10.0, postEnumbers);
-                    else
-                        resultingWithDotE = behindEnumbers * Math.Pow(0.1, postEnumbers);
-
-
-                    return resultingWithDotE;
-                }
-                else
-                    if (!isEfound && dotPosition != 0)
-                    dVal += ((double)((int)final[k] - 48) * Math.Pow(0.1, (int)k));
-                k++;
-            }
-            dVal *= (Math.Pow(10.0, (int)k - 1));
-            dVal /= (Math.Pow(10.0, (int)origin.Length - dotPosition));
-            return dVal;
-        }
+            catch { return 0; }
+       } 
 
         static bool isE(char ch)
         {

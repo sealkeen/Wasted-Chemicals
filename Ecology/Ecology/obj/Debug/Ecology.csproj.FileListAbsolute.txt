@@ -1,0 +1,12 @@
+E:\VCSharp\Ecology\Ecology\bin\Debug\Ecology.exe.config
+E:\VCSharp\Ecology\Ecology\bin\Debug\Ecology.exe
+E:\VCSharp\Ecology\Ecology\bin\Debug\Ecology.pdb
+E:\VCSharp\Ecology\Ecology\obj\Debug\Ecology.csprojResolveAssemblyReference.cache
+E:\VCSharp\Ecology\Ecology\obj\Debug\Ecology.exe
+E:\VCSharp\Ecology\Ecology\obj\Debug\Ecology.pdb
+E:\Code\WastedChemicals\Ecology\Ecology\bin\Debug\Ecology.exe.config
+E:\Code\WastedChemicals\Ecology\Ecology\obj\Debug\Ecology.exe
+E:\Code\WastedChemicals\Ecology\Ecology\obj\Debug\Ecology.pdb
+E:\Code\WastedChemicals\Ecology\Ecology\bin\Debug\Ecology.exe
+E:\Code\WastedChemicals\Ecology\Ecology\bin\Debug\Ecology.pdb
+E:\Code\WastedChemicals\Ecology\Ecology\obj\Debug\Ecology.csprojResolveAssemblyReference.cache
