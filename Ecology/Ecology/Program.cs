@@ -11,15 +11,12 @@ namespace Ecology
     //Читаем Comma Separated Data файл, выводим из него необходимые данные на экран консоли.
     partial class Program
     {
-        const int range = 597; //Размер Массива с <data>ми
         static string inPath = @"data.txt";
-
-        public static FileStream fS = new FileStream(inPath, FileMode.Open);
-        public static StreamReader lineReader = new StreamReader(fS, Encoding.Default);
+        public static StreamReader lineReader = new StreamReader(inPath, Encoding.Default);
 
         static void Main(string[] args)
         {
-            if (!CheckFileExisting()) { Console.ReadKey(); return; }
+            if (!CheckFileExisting()) { Console.ReadKey(); return; } //Если наш файл потерялся, выходим.
             Console.ReadKey();
             
             List<Data> example = new List<Data>();
@@ -213,17 +210,13 @@ namespace Ecology
 
         static void RenewTextReader()
         {
-            Console.WriteLine(lineReader.ReadLine()+Environment.NewLine);
-            lineReader = new StreamReader(fS, Encoding.Default);
-            Console.WriteLine(lineReader.ReadLine());
-            
+            lineReader = new StreamReader(inPath, Encoding.Default);
         }
 
         ~Program()
         {
             lineReader.Close();
         }
-
 
     }
 }

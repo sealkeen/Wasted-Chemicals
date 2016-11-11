@@ -7,19 +7,22 @@ namespace Ecology
 {
     partial class Program
     {
+        const int RANGE = 597; //Размер Массива с <data>ми
+
         #region Auxiliary Fields
-        static int endDouPos; static int ePosition;
         static int strCnt = 0;
         static int zapStrCtr = 0;
-        static bool isCntr = false;
         static bool isEfound = false;
-        static bool isAlreadyGotten = false;
         static string noxBuff = "";
         #endregion
 
 
         //Дополнительные ручные методы (без linq и оптимизации)
 
+
+        /// <summary>
+        /// Use this method instead of Main
+        /// </summary>
         public static void StartHandlingManually()
         {
             if (!CheckFileExisting()) { Console.ReadKey(); return; }
@@ -100,7 +103,7 @@ namespace Ecology
             //1st question --- end
             //2nd question --- start
 
-            bool[] isAlreadyExist = new bool[range];
+            bool[] isAlreadyExist = new bool[RANGE];
             List<string> areas = new List<string>();
             List<string> areaOrigin = new List<string>();
 
@@ -154,10 +157,10 @@ namespace Ecology
             //2nd question --- end
             //3rd question --- start
 
-            bool[] for2014 = new bool[range];
-            bool[] inDeCrease = new bool[range];
-            zeroIntoTheArray(ref for2014, 0, range);
-            zeroIntoTheArray(ref inDeCrease, 0, range);
+            bool[] for2014 = new bool[RANGE];
+            bool[] inDeCrease = new bool[RANGE];
+            zeroIntoTheArray(ref for2014, 0, RANGE);
+            zeroIntoTheArray(ref inDeCrease, 0, RANGE);
 
             for (int i = 1; i < 594; i++)
             {
@@ -168,7 +171,7 @@ namespace Ecology
             {
                 if (for2014[i] == true)
                 {
-                    for (int si = 0; si < range; si++)
+                    for (int si = 0; si < RANGE; si++)
                     {
                         if (exmp[si].Name == exmp[i].Name &&
                             exmp[si].Area == exmp[si].Area &&
@@ -287,7 +290,13 @@ namespace Ecology
             string item = lineReader.ReadLine();
             strCnt++;
 
+            bool isCntr = false;
+            bool isAlreadyGotten = false;
             int dozapyatBuff = 0;
+            int endDouPos = 0;
+            int ePosition = 0;
+
+
             while (item != null)
             {
                 for (int c = 0; isAlreadyGotten == false && c < item.Length; c++)
@@ -367,19 +376,19 @@ namespace Ecology
             switch (valuePosition)
             {
                 case 0:
-                    for (int ye = 0; ye < range; ye++)
+                    for (int ye = 0; ye < RANGE; ye++)
                     {
                         structura[ye].Name = "";
                     }
                     break;
                 case 1:
-                    for (int ye = 0; ye < range; ye++)
+                    for (int ye = 0; ye < RANGE; ye++)
                     {
                         structura[ye].Area = "";
                     }
                     break;
                 case 2:
-                    for (int ye = 0; ye < range; ye++)
+                    for (int ye = 0; ye < RANGE; ye++)
                     {
                         structura[ye].Source = "";
                     }
@@ -516,7 +525,7 @@ namespace Ecology
 
         static void InitializeListFields(ref List<Data> example)
         {
-            for (int d = 0; d < range; d++) { example.Add(new Data()); }
+            for (int d = 0; d < RANGE; d++) { example.Add(new Data()); }
         }
 
         static void noxStringToDouble(ref List<Data> exmp)
@@ -524,11 +533,11 @@ namespace Ecology
             bool isMaxFound = false;
             double currMax = 0;
             double currVal = 0;
-            double[] values = new double[range];
+            double[] values = new double[RANGE];
             List<double> maxValues = new List<double>(10);
             List<string> maxValStrings = new List<string>(10);
 
-            for (int i = 0; i < range; i++)
+            for (int i = 0; i < RANGE; i++)
                 values[i] = -1;
 
             for (int c = 0; c < 10; c++)
@@ -562,7 +571,7 @@ namespace Ecology
 
             for (int k = 0; k < 10; k++)
             {
-                for (int i = 0; i < range; i++)
+                for (int i = 0; i < RANGE; i++)
                 {
                     switch (k)
                     {
@@ -712,7 +721,6 @@ namespace Ecology
             example.RemoveAt(0);
 
         }
-
 
         static double CharToDouble(char ch)
         {
