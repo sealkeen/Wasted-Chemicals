@@ -215,7 +215,8 @@ namespace Ecology
 
         ~Program()
         {
-            lineReader.Close();
+            if(lineReader != null)
+                lineReader.Close();
         }
 
     }

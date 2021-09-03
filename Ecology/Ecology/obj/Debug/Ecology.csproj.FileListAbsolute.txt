@@ -10,3 +10,6 @@ E:\Code\WastedChemicals\Ecology\Ecology\obj\Debug\Ecology.pdb
 E:\Code\WastedChemicals\Ecology\Ecology\bin\Debug\Ecology.exe
 E:\Code\WastedChemicals\Ecology\Ecology\bin\Debug\Ecology.pdb
 E:\Code\WastedChemicals\Ecology\Ecology\obj\Debug\Ecology.csprojResolveAssemblyReference.cache
+C:\Users\Sealkeen\Documents\VCSharp\SUAI\Ecology\WastedChemicalsSharp\Wasted-Chemicals\Ecology\Ecology\bin\Debug\Ecology.exe.config
+C:\Users\Sealkeen\Documents\VCSharp\SUAI\Ecology\WastedChemicalsSharp\Wasted-Chemicals\Ecology\Ecology\obj\Debug\Ecology.exe
+C:\Users\Sealkeen\Documents\VCSharp\SUAI\Ecology\WastedChemicalsSharp\Wasted-Chemicals\Ecology\Ecology\obj\Debug\Ecology.pdb
